@@ -1,0 +1,32 @@
+/* $$$$$$$$$$$$$$$   CUSTUM STYLES $$$$$$$$$$$$$ */
+
+body {
+    margin: 0;
+    display: block;
+    text-align: center;
+    background-color: rgb(154, 154, 207);
+}
+
+body h1 {
+font-size: 45px;
+color: rgba(189, 22, 22, 0.719);
+}
+body p {
+    font-size: 20px;
+}
+
+.Field {
+   background-color: #fff; 
+   border-radius: 8px;
+}
+.submitButton {
+    background-color: rgba(189, 22, 22, 0.719);;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 25px;
+    padding: 7px 15px;
+}
+
+#resulField {
+    font-size: 38px;
+}
