@@ -8,6 +8,7 @@ function solve() {
     const addBtn = document.getElementById('add')
     const resetBtn = document.getElementById('reset')
     const ulRootEl = document.getElementById('list')
+    const sentListSection = document.getElementsByClassName('sent-list')[0]
 
 
 
@@ -64,6 +65,9 @@ function solve() {
         deleteBtn.setAttribute('type','submit')
         sendBtn.setAttribute('id','send')
         deleteBtn.setAttribute('id','delete')
+
+        sendBtn.addEventListener('click', addMsgFuntion)
+        deleteBtn.addEventListener('click', deleteFunction)
         
 
         h4TitleEl.textContent = `Title: ${title}`
@@ -79,5 +83,37 @@ function solve() {
         divContainer.appendChild(deleteBtn)
 
         ulRootEl.appendChild(liContainerEl)
+    }
+
+    function addMsgFuntion(e) {
+        let liEl = e.currentTarget.parentElement.parentElement
+        let newLiRootEl = document.createElement('li')
+        let spanNameEl = document.createElement('span')
+        let spanTitleEl = document.createElement('span')
+        let titleEl = liEl.querySelectorAll('h4')[0].innerHTML.split(': ')[1]
+        let nameEl = liEl.querySelectorAll('h4')[1].innerHTML.split(': ')[1]
+        spanNameEl.textContent = `To: ${nameEl}`
+        spanTitleEl.textContent = `Title : ${titleEl}`
+
+        let newDivContainer = document.createElement('div')
+        newDivContainer.classList.add('btn')
+
+        let newDeleteBtn = document.createElement('button')
+        newDeleteBtn.className = 'delete'
+        newDeleteBtn.setAttribute('type', 'submit')
+        newDeleteBtn.textContent = `Delete`
+
+        newLiRootEl.appendChild(spanNameEl)
+        newLiRootEl.appendChild(spanTitleEl)
+        newDivContainer.appendChild(newDeleteBtn)
+        newLiRootEl.appendChild(newDivContainer);
+        sentListSection.appendChild(newLiRootEl)
+        
+        e.currentTarget.parentElement.parentElement.remove()
+    }
+
+    function deleteFunction(e) {
+        e.currentTarget.parentElement.parentElement.remove()
+
     }
 }
