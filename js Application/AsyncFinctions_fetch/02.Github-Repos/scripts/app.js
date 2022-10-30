@@ -4,7 +4,7 @@ function loadRepos() {
 	fetch(`https://api.github.com/users/${username}/repos`)
 		.then(handleRes)
 		.then(handleData)
-		.catch()
+		.catch(handleError)
 
 
 		function handleRes(res) {
@@ -42,6 +42,7 @@ function loadRepos() {
 		}
 
 		function handleError(err) {
-			console.log(err);
+			let li = document.getElementById('repos')
+			li.textContent = err.message
 		}
 }
